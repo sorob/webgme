@@ -1,56 +1,76 @@
+/* Primary color for links, similar to VSCode's blue */
 a {
-  color: #3160ab; }
+  color: #3794ff;
+}
 
+/* Hover state for links */
 a:hover {
-  color: #ff7700; }
+  color: #9CDCFE;
+}
 
+/* Toolbar container */
 .toolbar-container a {
-  color: #00235b;
-  transition: background-color .2s; }
+  color: #d4d4d4; /* Light grey text */
+  background-color: #1e1e1e; /* Dark background */
+  transition: background-color .2s;
+}
+
+/* Hover and active state in the toolbar */
 .toolbar-container a:hover,
 .toolbar-container a:active {
-  color: #fff;
-  background-color: #00235b; }
-.toolbar-container .btn:active, .toolbar-container .btn.active {
-  background-color: #a5afbe;
-  color: #fff; }
-.toolbar-container .btn:active, .toolbar-container .btn.active:hover {
-  background-color: #a5afbe;
-  color: #fff; }
+  color: #ffffff;
+  background-color: #007acc; /* VSCode's blue */
+}
+
+/* Active state for toolbar buttons */
+.toolbar-container .btn:active,
+.toolbar-container .btn.active {
+  background-color: #333333; /* Darker grey for active state */
+  color: #dcdcdc;
+}
+
+/* Hover state for specific buttons in the toolbar */
 .toolbar-container .btn[title="Pointer"]:hover,
 .toolbar-container .btn[title="Pointer"]:active,
 .toolbar-container .btn[title="Set"]:hover,
 .toolbar-container .btn[title="Set"]:active {
-  background-color: #d3d8df; }
+  background-color: #252526; /* Slightly lighter dark grey */
+}
 
+/* Style for active navigation pills */
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  background: #a5afbe;
-  border-radius: 0; }
+  background: #333333;
+  border-radius: 0;
+}
 
+/* Separator color */
 .separator {
-  border-color: #a5afbe; }
+  border-color: #3c3c3c; /* Dark grey */
+}
 
+/* Navbar inverse */
 .navbar-inverse {
-  background-image: linear-gradient(to bottom, #040524 0, #03071d 100%); }
+  background-image: linear-gradient(to bottom, #1e1e1e 0, #252526 100%);
+}
 
-/* Selected styling */
+/* Selected item styling */
 .selected > div {
-  box-shadow: 0 0 6px #ff7700; }
+  box-shadow: 0 0 6px #3794ff; /* Blue glow for selected items */
+}
 
+/* Button styles */
 .s-btn {
-  background-color: #00235b !important;
-  color: #fff !important; }
-  .s-btn:hover {
-    background-color: #ff7700 !important; }
+  background-color: #007acc; /* VSCode blue */
+  color: #fff;
+}
 
-/*.selected {
-    .svg-decorator {
-      .svg-content {
-        svg {
-          box-shadow: 0 0 5px $dark;
-        }
-      }
-    }
+.s-btn:hover {
+  background-color: #3794ff; /* Lighter blue on hover */
+}
+
+/* Uncommented and updated the commented section for selected SVGs */
+/*.selected .svg-decorator .svg-content svg {
+  box-shadow: 0 0 5px #3c3c3c; 
 }*/

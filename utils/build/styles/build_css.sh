@@ -1,1 +1,1 @@
-sass --watch ./:./
+npx sass --watch ./:./

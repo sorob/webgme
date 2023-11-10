@@ -1,7 +1,12 @@
 .merge-dialog .selected {
-  font-weight: bold; }
+  font-weight: bold;
+}
 .merge-dialog .conflict-item {
-  cursor: pointer; }
+  cursor: pointer;
+}
 .merge-dialog .commits {
   /* Monospace stack */
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/*# sourceMappingURL=MergeDialog.css.map */

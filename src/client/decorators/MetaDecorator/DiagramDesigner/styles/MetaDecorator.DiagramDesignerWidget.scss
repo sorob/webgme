@@ -2,22 +2,23 @@
  * @author rkereskenyi / https://github.com/rkereskenyi
  */
 @import "../../../../js/Widgets/DiagramDesigner/styles/Connector";
-
 $min-width: 90px;
 $height: 40px;
-$border: 1px solid #000000;
+$border: 1px solid #3c3c3c; // Dark grey border
 $padding: 0 3px 0 3px;
 $name-padding: 0 17px 0 17px;
-$background-color: #FFFFFF;
-$selected-background-color: lighten($background-color, 10);
-$attributes-add-new-hover-background-color: #DBEAFC;
-$selected-attributes-add-new-hover-background-color: #FFFFC0;
-$selected-attributes-add-new-hover-color: #000000;
+$background-color: #1e1e1e; // Dark background color
+$selected-background-color: #252526; // Slightly lighter dark background
+$attributes-add-new-hover-background-color: #007acc; // VSCode blue for hover
+$selected-attributes-add-new-hover-background-color: #007acc;
+$selected-attributes-add-new-hover-color: #ffffff;
 $attribute-height: 16px;
-$hover-background-color: #EEE;
-$section-title-background-color: #F3F3F3;
-$section-title-color: #000000;
-$abstract-class-name-color: #AAAAAA;
+$hover-background-color: #2d2d2d; // Slightly darker background for hover
+$section-title-background-color: #3c3c3c; // Dark grey for section titles
+$section-title-color: #d4d4d4; // Light grey text
+$abstract-class-name-color: #c5c5c5; // Lighter grey for abstract class name
+
+$border-radius: 5px; // Rounded corners
 
 .meta-decorator {
   min-width: $min-width;
@@ -25,27 +26,32 @@ $abstract-class-name-color: #AAAAAA;
   border: $border;
   background-color: $background-color;
   text-align: center;
+  border-radius: $border-radius; // Apply rounded corners
 
   .name {
     white-space: nowrap;
     font-size: 11px;
     font-weight: bold;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
-    //border-bottom: 1px solid #000000;
     padding: $name-padding;
+    color: #d4d4d4; // Light grey text
 
     input {
       height: 16px !important;
       line-height: 16px !important;
       font-size: 11px !important;
+      background-color: #3c3c3c; // Dark grey input background
+      color: #d4d4d4; // Light grey input text
+      border-radius: $border-radius; // Rounded corners for input
     }
   }
 
   .connection-header {
     display: none;
+
   }
 
   &.is-connection {
