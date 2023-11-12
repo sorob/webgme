@@ -203,12 +203,6 @@ To configure the default behaviour of individual components (e.g. plugins, ui-wi
 - `config.executor.labelJobs = './labelJobs.json'`
  - Path to configuration file for label jobs for the workers.
 
-#### mongo
-- `config.mongo.uri = 'mongodb://127.0.0.1:27017/multi'`
- - MongoDB connection [uri](http://docs.mongodb.org/manual/reference/connection-string/)
-- `config.mongo.options = see webgme-engine config.default`
- - Options for [MongoClient.connect](https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect)
-
 #### plugin
 - `config.plugin.allowBrowserExecution = true`
  - If true will enable execution of plugins in the browser.

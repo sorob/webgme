@@ -11,7 +11,6 @@ As a developer of a webgme app you will however be required to host your own web
 to install some dependencies in addition to having access to a browser.
 
 * `Node.js <https://nodejs.org/>`_ (version >= 6, CI tests are currently performed on versions 6.x, 8.x and LTS is recommended).
-* `MongoDB <https://www.mongodb.com/>`_ (version >= 3.0).
 * `Git <https://git-scm.com>`_ (must be available in PATH).
 * `Python <https://www.python.org/>`_ (This is only needed if you intend to write plugins in python - both v2.7.x and v3.x are supported).
 
@@ -57,25 +56,6 @@ or
 
   nvm install v8.12.0
 
-
-Installing MongoDB
-------------------
-Webgme stores the models, project metadata and user info inside a mongo database. The
-`Community edition <https://docs.mongodb.com/manual/administration/install-community/>`_ works fine.
-
-After you've followed the instructions and successfully installed mongodb. Either Launch a daemon (mongod) with the default options or pass the dbpath flag to store files at another location.
-
-Windows
-
-.. code-block:: bash
-
-    mongod --dbpath C:\webgmeData
-
-Linux based/MacOS
-
-.. code-block:: bash
-
-    mongod --dbpath ~/webgmeData
 
 Git
 --------
