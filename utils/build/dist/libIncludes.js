@@ -23,6 +23,7 @@ define([
     'bootstrap-notify',
 
     'q',
+    'ajv',
     'ejs',
     'webgme-ot',
     'superagent',

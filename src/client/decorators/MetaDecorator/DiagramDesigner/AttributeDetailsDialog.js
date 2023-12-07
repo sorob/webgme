@@ -55,6 +55,22 @@ define([
             return result;
         }
 
+        function isValidJSON(val) {
+            var result = true;
+
+            if (val === "" || val === undefined || val === null) {
+                return result;
+            }
+
+            try {
+                JSON.parse(val);
+            } catch (e) {
+                result = false;
+            }
+
+            return result;
+        }
+
         function isValidAttributeName(name) {
             return !(name === '' ||
             name === 'name' ||
@@ -107,6 +123,8 @@ define([
                 self._pRangeMin.val('');
                 self._pRegExp.hide();
                 self._pRegExpValue.val('');
+                self._pJsonSchema.hide();
+                self._pJsonSchemaValue.val('');
             } else {
                 self._pEnumValues.hide();
                 self._inputEnumValues.val('');
@@ -115,6 +133,8 @@ define([
                     self._pRange.show();
                 } else if (self._inputType.val() === 'string') {
                     self._pRegExp.show();
+                } else if (self._inputType.val() === 'json') {
+                    self._pJsonSchema.show();
                 }
             }
         }
@@ -243,6 +263,10 @@ define([
                 if(self._cbPassword.is(':checked')){
                     attrDesc.isPassword = true;
                 }
+            } else if (attrDesc.type === 'json') {
+                if (self._pJsonSchemaValue.val()) {
+                    attrDesc.jsonSchema = self._pJsonSchemaValue.val();
+                }
             }
 
             self._dialog.modal('hide');
@@ -280,11 +304,13 @@ define([
             switch (newType) {
                 case 'integer':
                     self._pRegExp.hide();
+                    self._pJsonSchema.hide();
                     self._pRange.show();
                     break;
                 case 'float':
                     self._pRange.show();
                     self._pRegExp.hide();
+                    self._pJsonSchema.hide();
                     break;
                 case 'boolean':
                     self._pDefaultValue.hide();
@@ -292,6 +318,7 @@ define([
                     self._pEnumValues.hide();
                     self._pDefaultValueBoolean.show();
                     self._pRegExp.hide();
+                    self._pJsonSchema.hide();
                     self._pRange.hide();
                     break;
                 case ASSET_TYPE:
@@ -299,8 +326,18 @@ define([
                     self._pEnum.hide();
                     self._pEnumValues.hide();
                     self._pRegExp.hide();
+                    self._pJsonSchema.hide();
                     self._pRange.hide();
                     break;
+                case 'json':
+                    self._pJsonSchema.show();
+                    self._pDefaultValue.show();
+                    self._pEnum.hide();
+                    self._pEnumValues.hide();
+                    self._pRegExp.hide();
+                    self._pRange.hide();
+                    break;
+                case 'string':
                 default:
                     self._pRegExp.show();
                     self._pRange.hide();
@@ -369,6 +406,9 @@ define([
         this._pRegExp = this._el.find('#pRegExp');
         this._pRegExpValue = this._el.find('#inputRegExp');
 
+        this._pJsonSchema = this._el.find('#pJsonSchema');
+        this._pJsonSchemaValue = this._el.find('#inputJsonSchema');
+
         this._pRange = this._el.find('#pRange');
         this._pRangeMin = this._el.find('#inputMinValue');
         this._pRangeMax = this._el.find('#inputMaxValue');
@@ -398,6 +438,20 @@ define([
                 self._btnDelete.disable(true);
             } else {
                 self._pRegExpValue.removeClass('text-danger');
+                self._btnSave.disable(false);
+                self._btnDelete.disable(false);
+            }
+        });
+
+        this._pJsonSchemaValue.on('keyup', function () {
+            var val = self._pJsonSchemaValue.val();
+
+            if (!isValidJSON(val)) {
+                self._pJsonSchemaValue.addClass('text-danger');
+                self._btnSave.disable(true);
+                self._btnDelete.disable(true);
+            } else {
+                self._pJsonSchemaValue.removeClass('text-danger');
                 self._btnSave.disable(false);
                 self._btnDelete.disable(false);
             }
@@ -477,6 +531,7 @@ define([
             this._pDefaultValueBoolean.show();
             this._pRange.hide();
             this._pRegExp.hide();
+            this._pJsonSchema.hide();
             if (attributeDesc.defaultValue !== true) {
                 this._el.find('#rbBooleanFalse').first().attr('checked', 'checked');
             }
@@ -485,6 +540,7 @@ define([
             this._pEnum.hide();
             this._pRange.hide();
             this._pRegExp.hide();
+            this._pJsonSchema.hide();
         } else {
             this._inputDefaultValue.val(attributeDesc.defaultValue);
             this._inputDefaultValueMultiline.val(attributeDesc.defaultValue);
@@ -494,8 +550,19 @@ define([
                 enumSelectionChanged(true);
             }
 
-            if (attributeDesc.type === 'string') {
+            if (attributeDesc.type === 'json') {
+                this._pJsonSchema.show();
+                this._pDefaultValue.show();
+                this._pEnum.hide();
+                this._pEnumValues.hide();
+                this._pRegExp.hide();
                 this._pRange.hide();
+                if (attributeDesc.jsonSchema) {
+                    this._pJsonSchemaValue.val(attributeDesc.jsonSchema);
+                }
+            } else if (attributeDesc.type === 'string') {
+                this._pRange.hide();
+                this._pJsonSchema.hide();
                 this._pRegExp.show();
                 this._pMultiline.show();
                 this._pPassword.show();
@@ -529,6 +596,7 @@ define([
                 }
             } else {
                 this._pRange.show();
+                this._pJsonSchema.hide();
                 this._pRegExp.hide();
                 if (typeof attributeDesc.min === 'number') {
                     this._pRangeMin.val(attributeDesc.min);

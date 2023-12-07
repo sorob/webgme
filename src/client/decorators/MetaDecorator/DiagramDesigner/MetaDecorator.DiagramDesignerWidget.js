@@ -152,6 +152,7 @@ define([
                     min: attrMeta.min,
                     max: attrMeta.max,
                     regexp: attrMeta.regexp,
+                    jsonSchema: attrMeta.jsonSchema,
                     readonly: attrMeta.readonly,
                     hidden: attrMeta.hidden,
                     isPassword: attrMeta.isPassword,
@@ -568,7 +569,7 @@ define([
             attrSchema,
             confirmDialog = new ConfirmDialog();
 
-        attrSchema = {type: attrDesc.type, min: attrDesc.min, max: attrDesc.max, regexp: attrDesc.regexp};
+        attrSchema = {type: attrDesc.type, min: attrDesc.min, max: attrDesc.max, regexp: attrDesc.regexp, jsonSchema: attrDesc.jsonSchema};
 
         if (attrDesc.readonly) {
             attrSchema.readonly = true;

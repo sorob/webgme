@@ -47,7 +47,7 @@ Navigate into the newly created directory and you will see the content...
   Contains a list of patterns of files that will not be checked into the repository if using git as version control system.
 
 :code:`app.js`
-  This is the javascript file that starts the webgme server. Note that it requires a mongo database server to be available at the specified mongo-uri from the gmeConfig. If you need to make some actions before start up - this is the place to put that code.
+  This is the javascript file that starts the webgme server. If you need to make some actions before start up - this is the place to put that code.
 
 :code:`package.json`
   The `package.json https://docs.npmjs.com/files/package.json` contain information for npm. It's main purpose is to store the dependencies of a module (this repo can be seen as a module and used by others). Notice that
@@ -90,7 +90,7 @@ all possible parameters and how to switch between configuration files is documen
 
 Starting the server
 -------------------
-Make sure you have mongodb running. Look back at the dependencies section. As mentioned before the app.js file is
+Look back at the dependencies section. As mentioned before the app.js file is
 the starting point for the webgme server. To invoke it with node.js simply do:
 
 .. code-block:: bash

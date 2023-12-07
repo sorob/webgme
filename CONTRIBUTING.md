@@ -17,7 +17,6 @@
 4. Update version numbers repeat 2-4, until only three packages are listed
   - `socket.io`
   - `socket.io-client`
-  - `mongodb@1.4.XX`
 5. Update superagent in `src/client/lib/superagent` see `src/client/lib/superagent/UPGRADE`
 6. Update q `cp node_modules/q/q.js src/client/lib/q/q.js`
 
